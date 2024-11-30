@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>be.paradnor</groupId>
+    <artifactId>ui-behaviors</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.amashchenko.maven.plugin</groupId>
+                <artifactId>gitflow-maven-plugin</artifactId>
+                <version>1.21.0</version>
+                <configuration>
+                    <commitDevelopmentVersionAtStart>true</commitDevelopmentVersionAtStart>
+                    <useSnapshotInRelease>true</useSnapshotInRelease>
+                    <skipTestProject>true</skipTestProject>
+                    <skipFeatureVersion>true</skipFeatureVersion> <!-- don't change the project version with the name of the feature -->
+                    <versionDigitToIncrement>1</versionDigitToIncrement> <!-- 0-based index of release number => 1 == minor -->
+                    <hotfixVersionDigitToIncrement>2</hotfixVersionDigitToIncrement> <!-- 0-based index of hotfix number => 2 == patch-->
+                    <commitMessages>
+                        <releaseStartMessage>Change version to @{version}</releaseStartMessage>
+                        <releaseFinishMessage>Change version to @{version}</releaseFinishMessage>
+
+                        <releaseFinishMergeMessage>Merge release @{version}</releaseFinishMergeMessage>
+                        <hotfixFinishMergeMessage>Merge hotfix @{version}</hotfixFinishMergeMessage>
+
+                        <releaseVersionUpdateMessage>Prepare next version</releaseVersionUpdateMessage>
+
+                        <tagHotfixMessage>Hotfix @{version}</tagHotfixMessage>
+                        <tagReleaseMessage>Release @{version}</tagReleaseMessage>
+                    </commitMessages>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
